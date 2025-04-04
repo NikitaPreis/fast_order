@@ -17,7 +17,7 @@
 
 Клонировать репозиторий:
 ```
-git@github.com:NikitaPreis/fast_order.git
+git clone git@github.com:NikitaPreis/fast_order.git
 cd fast_order
 
 ```
