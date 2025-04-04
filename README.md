@@ -39,7 +39,7 @@ DB_HOST=localhost
 DB_PORT=5432
 
 # Секретный ключ приложения
-SECRET_KEY=django-insecure-sdx)ip1^-ik@r4+jeos3iwkl27ux7lkis2d&vklfi)sqh-ih7g'
+SECRET_KEY=django-insecure-sdx)ip1^-ik@r4+jeos3iwkl27ux7lkis2d&vklfi)sqh-ih7g
 
 # Значение DEBUG
 DEBUG = True
