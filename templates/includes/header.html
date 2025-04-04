@@ -1,0 +1,39 @@
+{% load static %}
+{% with request.resolver_match.view_name as view_name %}
+
+<header>
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'orders:list' %} " width="30" height="30" class="d-inline-block align-top" alt="">
+        <b>Fast Order</b>
+      </a>
+
+      <ul class="nav  nav-pills" >
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'orders:list' %}active{% endif %}"
+            href="{% url 'orders:list' %}">
+            Заказы
+          </a>
+        </li>
+
+      <ul class="nav  nav-pills" >
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'orders:create' %}active{% endif %}"
+            href="{% url 'orders:create' %}">
+            Создать заказ
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'orders:sales_revenues' %}active{% endif %}"
+            href="{% url 'orders:sales_revenues' %}">
+            Выручка
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  {% endwith %} 
+
+</header>

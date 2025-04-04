@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% load static %}
+{% with request.resolver_match.view_name as view_name %}
+
+<main class="container mt-4">
+  <h2 class="text-center mb-4">Заказы</h2>
+
+  <form action="{% url 'orders:list' %}" method="GET">
+    {% csrf_token %}
+    <input class="search" type="text" name="search" placeholder="Найти заказы по статусу или номеру столика" size='154'>
+    <input type="submit" value="Искать заказы">
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID заказа</th>
+          <th>Номер столика</th>
+          <th>Статус заказа</th>
+          <td>Список блюд</td>
+          <th>Стоимость заказа</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in page_obj %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.table_number }}</td>
+          <td>
+            {{ order.get_status_display }}
+            <a href="{% url 'orders:update_status' order.id %}"><p>Обновить<p></a>
+          </td>
+          <td>
+            <ul>
+          {% for item in order.items.all %}
+            <li>{{ item }}</li>
+          {% endfor %}
+            </ul>
+          </td>
+          <td>{{ order.total_price }}</td>
+          <td>
+          <a href="{% url 'orders:delete' order.id %}"><p>Удалить<p></a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% include "includes/paginator.html" %}
+
+</main>
+{% endwith %}
+{% endblock %}
