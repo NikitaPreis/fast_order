@@ -10,6 +10,9 @@
 * Django
 * Django REST framework
 * PostgreSQL
+* HTML
+* CSS
+* Bootstrap
 * Docker
 
 
